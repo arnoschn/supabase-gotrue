@@ -268,7 +268,7 @@ func (m *TemplateMailer) MagicLinkMail(user *models.User, otp, referrerURL strin
 		user.GetEmail(),
 		string(withDefault(m.Config.Mailer.Subjects.MagicLink, "Your Magic Link")),
 		m.Config.Mailer.Templates.MagicLink,
-		string(withDefault(m.Config.Mailer.Templaes.MagicLinkBody,defaultMagicLinkMail)),
+		string(withDefault(m.Config.Mailer.Templates.MagicLinkBody,defaultMagicLinkMail)),
 		data,
 	)
 }
