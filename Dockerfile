@@ -2,7 +2,7 @@ FROM golang:1.20-alpine as build
 ENV GO111MODULE=on
 ENV CGO_ENABLED=0
 ENV GOOS=linux
-
+# implementing github workflow to build docker image
 RUN apk add --no-cache make git
 
 WORKDIR /go/src/github.com/supabase/gotrue
