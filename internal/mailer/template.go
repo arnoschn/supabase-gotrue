@@ -99,7 +99,7 @@ func (m *TemplateMailer) InviteMail(user *models.User, otp, referrerURL string) 
 		user.GetEmail(),
 		string(withDefault(m.Config.Mailer.Subjects.Invite, "You have been invited")),
 		m.Config.Mailer.Templates.Invite,
-		defaultInviteMail,
+		string(withDefault(m.Config.Mailer.Templates.InviteBody,defaultInviteMail)),
 		data,
 	)
 }
@@ -125,7 +125,7 @@ func (m *TemplateMailer) ConfirmationMail(user *models.User, otp, referrerURL st
 		user.GetEmail(),
 		string(withDefault(m.Config.Mailer.Subjects.Confirmation, "Confirm Your Email")),
 		m.Config.Mailer.Templates.Confirmation,
-		defaultConfirmationMail,
+		string(withDefault(m.Config.Mailer.Templates.ConfirmationBody,defaultConfirmationMail)),
 		data,
 	)
 }
@@ -143,7 +143,7 @@ func (m *TemplateMailer) ReauthenticateMail(user *models.User, otp string) error
 		user.GetEmail(),
 		string(withDefault(m.Config.Mailer.Subjects.Reauthentication, "Confirm reauthentication")),
 		m.Config.Mailer.Templates.Reauthentication,
-		defaultReauthenticateMail,
+		string(withDefault(m.Config.Mailer.Templates.ReauthenticationBody,defaultReauthenticateMail)),
 		data,
 	)
 }
@@ -205,7 +205,7 @@ func (m *TemplateMailer) EmailChangeMail(user *models.User, otpNew, otpCurrent, 
 				address,
 				string(withDefault(m.Config.Mailer.Subjects.EmailChange, "Confirm Email Change")),
 				template,
-				defaultEmailChangeMail,
+				string(withDefault(m.Config.Mailer.Templates.EmailChangeBody,defaultEmailChangeMail)),
 				data,
 			)
 		}(email.Address, email.Otp, email.TokenHash, email.Template)
@@ -242,7 +242,7 @@ func (m *TemplateMailer) RecoveryMail(user *models.User, otp, referrerURL string
 		user.GetEmail(),
 		string(withDefault(m.Config.Mailer.Subjects.Recovery, "Reset Your Password")),
 		m.Config.Mailer.Templates.Recovery,
-		defaultRecoveryMail,
+		string(withDefault(m.Config.Mailer.Templates.RecoveryBody,defaultRecoveryMail)),
 		data,
 	)
 }
@@ -268,7 +268,7 @@ func (m *TemplateMailer) MagicLinkMail(user *models.User, otp, referrerURL strin
 		user.GetEmail(),
 		string(withDefault(m.Config.Mailer.Subjects.MagicLink, "Your Magic Link")),
 		m.Config.Mailer.Templates.MagicLink,
-		defaultMagicLinkMail,
+		string(withDefault(m.Config.Mailer.Templaes.MagicLinkBody,defaultMagicLinkMail)),
 		data,
 	)
 }
