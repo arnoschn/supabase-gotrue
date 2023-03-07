@@ -4,6 +4,7 @@ require (
 	github.com/Masterminds/semver/v3 v3.1.1 // indirect
 	github.com/aaronarduino/goqrsvg v0.0.0-20220419053939-17e843f1dd40
 	github.com/ajstarks/svgo v0.0.0-20211024235047-1546f124cd8b
+	github.com/arnoschn/mailme v0.0.0-20230307091328-6e2ffc8815e6
 	github.com/badoux/checkmail v0.0.0-20170203135005-d0a759655d62
 	github.com/boombuler/barcode v1.0.1-0.20190219062509-6c824513bacc
 	github.com/coreos/go-oidc/v3 v3.0.0
@@ -26,7 +27,6 @@ require (
 	github.com/microcosm-cc/bluemonday v1.0.19 // indirect
 	github.com/mitchellh/mapstructure v1.1.2
 	github.com/mrjones/oauth v0.0.0-20190623134757-126b35219450
-	github.com/arnoschn/mailme v0.0.0-20230307091328-6e2ffc8815e6
 	github.com/pkg/errors v0.9.1
 	github.com/pquerna/otp v1.3.0
 	github.com/rs/cors v1.6.0
@@ -70,7 +70,6 @@ require (
 	github.com/fatih/structs v1.1.0
 	github.com/jackc/pgx/v4 v4.11.0
 )
-
 
 require (
 	github.com/apapsch/go-jsonmerge/v2 v2.0.0 // indirect
