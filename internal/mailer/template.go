@@ -95,11 +95,13 @@ func (m *TemplateMailer) InviteMail(user *models.User, otp, referrerURL string) 
 		"Data":            user.UserMetaData,
 	}
 
-	return m.Mailer.Mail(
+	return m.Mailer.MailWithAlternative(
 		user.GetEmail(),
 		string(withDefault(m.Config.Mailer.Subjects.Invite, "You have been invited")),
 		m.Config.Mailer.Templates.Invite,
-		string(withDefault(m.Config.Mailer.Templates.InviteBody,defaultInviteMail)),
+		defaultInviteMail,
+		m.Config.Mailer.Templates.InvitePlain,
+		"",
 		data,
 	)
 }
@@ -121,11 +123,13 @@ func (m *TemplateMailer) ConfirmationMail(user *models.User, otp, referrerURL st
 		"Data":            user.UserMetaData,
 	}
 
-	return m.Mailer.Mail(
+	return m.Mailer.MailWithAlternative(
 		user.GetEmail(),
 		string(withDefault(m.Config.Mailer.Subjects.Confirmation, "Confirm Your Email")),
 		m.Config.Mailer.Templates.Confirmation,
-		string(withDefault(m.Config.Mailer.Templates.ConfirmationBody,defaultConfirmationMail)),
+		defaultConfirmationMail,
+		m.Config.Mailer.Templates.ConfirmationPlain,
+		"",
 		data,
 	)
 }
@@ -139,11 +143,13 @@ func (m *TemplateMailer) ReauthenticateMail(user *models.User, otp string) error
 		"Data":    user.UserMetaData,
 	}
 
-	return m.Mailer.Mail(
+	return m.Mailer.MailWithAlternative(
 		user.GetEmail(),
 		string(withDefault(m.Config.Mailer.Subjects.Reauthentication, "Confirm reauthentication")),
 		m.Config.Mailer.Templates.Reauthentication,
-		string(withDefault(m.Config.Mailer.Templates.ReauthenticationBody,defaultReauthenticateMail)),
+		defaultReauthenticateMail,
+		m.Config.Mailer.Templates.ReauthenticationPlain,
+		"",
 		data,
 	)
 }
@@ -156,6 +162,7 @@ func (m *TemplateMailer) EmailChangeMail(user *models.User, otpNew, otpCurrent, 
 		TokenHash string
 		Subject   string
 		Template  string
+		TemplatePlain  string
 	}
 	emails := []Email{
 		{
@@ -164,6 +171,7 @@ func (m *TemplateMailer) EmailChangeMail(user *models.User, otpNew, otpCurrent, 
 			TokenHash: user.EmailChangeTokenNew,
 			Subject:   string(withDefault(m.Config.Mailer.Subjects.EmailChange, "Confirm Email Change")),
 			Template:  m.Config.Mailer.Templates.EmailChange,
+			TemplatePlain:  m.Config.Mailer.Templates.EmailChangePlain,
 		},
 	}
 
@@ -175,6 +183,7 @@ func (m *TemplateMailer) EmailChangeMail(user *models.User, otpNew, otpCurrent, 
 			TokenHash: user.EmailChangeTokenCurrent,
 			Subject:   string(withDefault(m.Config.Mailer.Subjects.Confirmation, "Confirm Email Address")),
 			Template:  m.Config.Mailer.Templates.EmailChange,
+			TemplatePlain:  m.Config.Mailer.Templates.EmailChangePlain,
 		})
 	}
 
@@ -191,7 +200,7 @@ func (m *TemplateMailer) EmailChangeMail(user *models.User, otpNew, otpCurrent, 
 		if err != nil {
 			return err
 		}
-		go func(address, token, tokenHash, template string) {
+		go func(address, token, tokenHash, template string, plainTemplate string) {
 			data := map[string]interface{}{
 				"SiteURL":         m.Config.SiteURL,
 				"ConfirmationURL": url,
@@ -201,14 +210,16 @@ func (m *TemplateMailer) EmailChangeMail(user *models.User, otpNew, otpCurrent, 
 				"TokenHash":       tokenHash,
 				"Data":            user.UserMetaData,
 			}
-			errors <- m.Mailer.Mail(
+			errors <- m.Mailer.MailWithAlternative(
 				address,
 				string(withDefault(m.Config.Mailer.Subjects.EmailChange, "Confirm Email Change")),
 				template,
-				string(withDefault(m.Config.Mailer.Templates.EmailChangeBody,defaultEmailChangeMail)),
+				defaultEmailChangeMail,
+				plainTemplate,
+				""
 				data,
 			)
-		}(email.Address, email.Otp, email.TokenHash, email.Template)
+		}(email.Address, email.Otp, email.TokenHash, email.Template, email.TemplatePlain)
 	}
 
 	for i := 0; i < len(emails); i++ {
@@ -238,11 +249,13 @@ func (m *TemplateMailer) RecoveryMail(user *models.User, otp, referrerURL string
 		"Data":            user.UserMetaData,
 	}
 
-	return m.Mailer.Mail(
+	return m.Mailer.MailWithAlternative(
 		user.GetEmail(),
 		string(withDefault(m.Config.Mailer.Subjects.Recovery, "Reset Your Password")),
 		m.Config.Mailer.Templates.Recovery,
-		string(withDefault(m.Config.Mailer.Templates.RecoveryBody,defaultRecoveryMail)),
+		defaultRecoveryMail,
+		m.Config.Mailer.Templates.RecoveryPlain,
+		"",
 		data,
 	)
 }
@@ -264,11 +277,13 @@ func (m *TemplateMailer) MagicLinkMail(user *models.User, otp, referrerURL strin
 		"Data":            user.UserMetaData,
 	}
 
-	return m.Mailer.Mail(
+	return m.Mailer.MailWithAlternative(
 		user.GetEmail(),
 		string(withDefault(m.Config.Mailer.Subjects.MagicLink, "Your Magic Link")),
 		m.Config.Mailer.Templates.MagicLink,
-		string(withDefault(m.Config.Mailer.Templates.MagicLinkBody,defaultMagicLinkMail)),
+		defaultMagicLinkMail,
+		m.Config.Mailer.Templates.MagicLinkPlain,
+		"",
 		data,
 	)
 }
