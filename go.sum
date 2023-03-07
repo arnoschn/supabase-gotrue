@@ -595,7 +595,7 @@ github.com/nbio/st v0.0.0-20140626010706-e9e8d9816f32/go.mod h1:9wM+0iRr9ahx58uY
 github.com/arnoschn/mailme v0.0.0-20230307091328-6e2ffc8815e6 h1:NDhkAGezrRIzt0s/HLbvGMP2Ml16AToMSdA43tVE0K0=
 github.com/arnoschn/mailme v0.0.0-20230307091328-6e2ffc8815e6/go.mod h1:28yXVwNUE69qJRn0VwVkKJjporwtyS8fErLRJ2OlW6s=
 github.com/netlify/netlify-commons v0.32.0 h1:IgpqedBa6aFrc+daRgGZ+SmU9eBXlDXzKSAjevWmshM=
-github.com/netlify/netlify-commons v0.32.0/go.mod h1:xZH7auZrc/N/ZKS9BRO74yNf8i9LitXq1h6JVFZ2jTc=
+github.com/netlify/netlify-commons v0.32.0/go.mod h1:S6CySS9NHs4xeaRKH9ggWOjJ7N501KanBFw/0sqr2Lc=
 github.com/oklog/oklog v0.3.2/go.mod h1:FCV+B7mhrz4o+ueLpx+KqkyXRGMWOYEvfiXtdGtbWGs=
 github.com/oklog/run v1.0.0/go.mod h1:dlhp/R75TPv97u0XWUtDeV/lRKWPKSdTuV0TZvrmrQA=
 github.com/oklog/ulid v1.3.1/go.mod h1:CirwcVhetQ6Lv90oh/F+FBtV6XMibvdAFo93nm5qn4U=
