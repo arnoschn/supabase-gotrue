@@ -216,7 +216,7 @@ func (m *TemplateMailer) EmailChangeMail(user *models.User, otpNew, otpCurrent, 
 				template,
 				defaultEmailChangeMail,
 				plainTemplate,
-				""
+				"",
 				data,
 			)
 		}(email.Address, email.Otp, email.TokenHash, email.Template, email.TemplatePlain)
