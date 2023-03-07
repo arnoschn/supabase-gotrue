@@ -12,7 +12,7 @@ func (m *noopMailClient) Mail(to, subjectTemplate, templateURL, defaultTemplate 
 	}
 	return nil
 }
-func (m *noopMailClient) MailWithAlternative(to, subjectTemplate, templateURL, defaultTemplate string, plainTemplateUrl, plainDefaultTemplate, templateData map[string]interface{}) error {
+func (m *noopMailClient) MailWithAlternative(to, subjectTemplate, templateURL, defaultTemplate string, plainTemplateUrl string, plainDefaultTemplate string, templateData map[string]interface{}) error {
 	if to == "" {
 		return errors.New("to field cannot be empty")
 	}
