@@ -26,7 +26,7 @@ require (
 	github.com/microcosm-cc/bluemonday v1.0.19 // indirect
 	github.com/mitchellh/mapstructure v1.1.2
 	github.com/mrjones/oauth v0.0.0-20190623134757-126b35219450
-	github.com/arnoschn/mailme v0.0.0-20230307124233-38248ec28d3a
+	github.com/arnoschn/mailme v0.0.0-20230314101342-64057f66a49f
 	github.com/pkg/errors v0.9.1
 	github.com/pquerna/otp v1.3.0
 	github.com/rs/cors v1.6.0
