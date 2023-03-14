@@ -128,17 +128,17 @@ type GlobalConfiguration struct {
 // EmailContentConfiguration holds the configuration for emails, both subjects and template URLs.
 type EmailContentConfiguration struct {
 	Invite			string `json:"invite"`
-	InvitePlain	 	string `json:"invite_body" split_words:"true"`
+	InvitePlain	 	string `json:"invite_plain" split_words:"true"`
 	Confirmation    	string `json:"confirmation"`
-	ConfirmationPlain 	string `json:"confirmation_body" split_words:"true"`
+	ConfirmationPlain 	string `json:"confirmation_plain" split_words:"true"`
 	Recovery         	string `json:"recovery"`
-	RecoveryPlain 	 	string `json:"recovery_body" split_words:"true"`
+	RecoveryPlain 	 	string `json:"recovery_plain" split_words:"true"`
 	EmailChange      	string `json:"email_change" split_words:"true"`
-	EmailChangePlain  	string `json:"email_change_body" split_words:"true"`
+	EmailChangePlain  	string `json:"email_change_plain" split_words:"true"`
 	MagicLink        	string `json:"magic_link" split_words:"true"`
-	MagicLinkPlain    	string `json:"magic_link_body" split_words:"true"`
+	MagicLinkPlain    	string `json:"magic_link_plain" split_words:"true"`
 	Reauthentication 	string `json:"reauthentication"`
-	ReauthenticationPlain 	string `json:"reauthentication_body" split_words:"true"`
+	ReauthenticationPlain 	string `json:"reauthentication_plain" split_words:"true"`
 }
 
 type ProviderConfiguration struct {
