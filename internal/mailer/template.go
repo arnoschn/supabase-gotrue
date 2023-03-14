@@ -12,6 +12,7 @@ import (
 
 type MailClient interface {
 	Mail(string, string, string, string, map[string]interface{}) error
+	MailWithAlternative(string, string, string, string, string, string, map[string]interface{}) error
 }
 
 // TemplateMailer will send mail and use templates from the site for easy mail styling
@@ -216,7 +217,7 @@ func (m *TemplateMailer) EmailChangeMail(user *models.User, otpNew, otpCurrent, 
 				template,
 				defaultEmailChangeMail,
 				plainTemplate,
-				""
+				"",
 				data,
 			)
 		}(email.Address, email.Otp, email.TokenHash, email.Template, email.TemplatePlain)
